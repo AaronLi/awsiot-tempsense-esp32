@@ -1,0 +1,34 @@
+[package]
+name = "awsiot-tempsense"
+version = "0.1.0"
+authors = ["AaronLi <dumfing@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.32.1", features = ["binstart"] }
+ws2812-esp32-rmt-driver = { version = "0.5.0", features = ["embedded-graphics-core", "unstable"]}
+smart-leds-trait = "0.2.1"
+embedded-svc = "0.24.0"
+esp-idf-svc = "0.45.0"
+colorsys = "0.6.7"
+itertools = "0.10.5"
+embedded-graphics = "0.7.1"
+eg-simple-status-messaging = {git = "https://github.com/AaronLi/eg-simple-status-messaging"}
+toml-cfg = "0.1.3"
+lazy_static = "1.4.0"
+sht3x = {git="https://github.com/AaronLi/sht3x-rs-dmfg"}
+esp-idf-hal = "0.40.1"
+
+[build-dependencies]
+embuild = "0.31.0"
